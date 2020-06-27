@@ -29,8 +29,10 @@ class Api extends REST_Controller {
 		   $result=$this->db->query("select * from offic where offic_name= '". $offic_name."'")->row();
 	
 	 if($result){
- $token_token=rand(1,1020120110000230);
-		 $token = AUTHORIZATION::generateToken($token_token);
+ 		//$token_token=rand(1,1020120110000230);
+		//  $token = AUTHORIZATION::generateToken($token_token);
+		$token = $this->input->post('token');
+
 		$id= $result->id;
 		
 			$data = array(
@@ -44,8 +46,9 @@ class Api extends REST_Controller {
 	 else{
 		 
           
-            $token = AUTHORIZATION::generateToken(['offic_name' => $offic_name]);
+            // $token = AUTHORIZATION::generateToken(['offic_name' => $offic_name]);
 			
+			$token = $this->input->post('token');
 			
 			
 			
