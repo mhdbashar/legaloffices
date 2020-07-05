@@ -32,12 +32,16 @@ class Api extends REST_Controller {
  		//$token_token=rand(1,1020120110000230);
 		//  $token = AUTHORIZATION::generateToken($token_token);
 		$token = $this->input->post('token');
+		$office_url = $this->input->post('office_url');
+
 
 		$id= $result->id;
 		
 			$data = array(
 			
-				'token'		=>	$token
+				'token'		=>	$token,
+				'office_url'		=>	$office_url
+
 			);
 		 
 		 $this->db->where('id', $id)->update('offic', $data);
@@ -49,12 +53,15 @@ class Api extends REST_Controller {
             // $token = AUTHORIZATION::generateToken(['offic_name' => $offic_name]);
 			
 			$token = $this->input->post('token');
+			$office_url = $this->input->post('office_url');
 			
 			
 			
 			$data = array(
 				'offic_name'	=>	$offic_name,
-				'token'		=>	$token
+				'token'		=>	$token,
+				'office_url'		=>	$office_url
+
 			);
 			
 			
@@ -97,7 +104,7 @@ class Api extends REST_Controller {
 		
 	
 		
-		$data=$this->db->query("select id,offic_name from offic ")->result_array();
+		$data=$this->db->query("select id,offic_name,office_url from offic ")->result_array();
 	
 		
 		$this->response($data, REST_Controller::HTTP_OK);
@@ -108,7 +115,7 @@ class Api extends REST_Controller {
 		
 		
 		
-		$data=$this->db->query("select token from offic where offic_name= '".$offic_name."'")->row();
+		$data=$this->db->query("select office_url,token from offic where offic_name= '".$offic_name."'")->row();
 	
 		
 		$this->response($data, REST_Controller::HTTP_OK);
