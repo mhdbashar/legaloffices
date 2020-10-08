@@ -122,6 +122,32 @@ class Api extends REST_Controller {
 	}
 	
 	
+	    function update_office_name_post() {
+
+
+        $new_office_name = $this->input->post('new_office_name');
+        $old_offic_name = $this->input->post('old_offic_name');
+
+        $sql = "select * from offic where offic_name = '" . $old_offic_name . "'";
+        $query = $this->db->query($sql);
+
+        $result = $query->row();
+        $id = $result->id;
+
+        if ($id) {
+
+            $data = array(
+                'offic_name' => $new_office_name
+            );
+            $this->db->where('id', $id)->update('offic', $data);
+          
+        }
+    }
+	
+	
+	
+	
+	
 
 }
 
