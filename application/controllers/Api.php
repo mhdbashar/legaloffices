@@ -46,9 +46,6 @@ class Api extends REST_Controller {
 
 
 
-
-
-
         if (isset($offic_name) && !empty($offic_name)) {
             $result = $this->db->query("select * from offic where offic_name= '" . $offic_name . "'")->row();
 
@@ -59,7 +56,7 @@ class Api extends REST_Controller {
 
 
 
-
+/* 
                 $token = $this->input->post('token');
                 $office_url = $this->input->post('office_url');
 
@@ -72,7 +69,17 @@ class Api extends REST_Controller {
                     'office_url' => $office_url
                 );
 
-                $this->db->where('id', $id)->update('offic', $data);
+                $this->db->where('id', $id)->update('offic', $data); */
+				
+				
+
+                   echo '<script>alert("الاسم موجود مسبقا لايمكنك أخذه ")</script>'; 
+
+                       return false;
+
+				
+				
+				
             } else {
 
 
